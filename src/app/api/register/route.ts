@@ -1,40 +1,34 @@
-// pages/api/report.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from "@/lib/prismaDB";
+import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
-const prisma = new PrismaClient();
-
-type ReportData = {
-  area: string;
-  severity: number;
-  subject: string;
-  description: string;
-};
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const { area, severity, subject, description }: ReportData = req.body;
-
-    try {
-      const report = await prisma.report.create({
-        data: {
-          area,
-          severity: Number(severity),
-          subject,
-          description,
+export async function POST(request: Request) {
+    const body = await request.json();
+    console.log(body);
+    const { name, email, password } = body;
+    if (!name || !email || !password) {
+        return NextResponse.json("Missing Fields", { status: 400 });
+      }
+    
+      const exist = await prisma.user.findUnique({
+        where: {
+          email: email.toLowerCase(),
         },
       });
-      res.statusCode = 201;
-      res.json(report);
-    } catch (error) {
-      console.error('Prisma error:', error); // Log the error
-      res.statusCode = 500;
-      res.json({ error: 'Internal Server Error' });
-    }
     
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.statusCode = 405;
-    res.end(`Method ${req.method} Not Allowed`);
-  }
-}
+      if (exist) {
+        return NextResponse.json("User already exists!", { status: 500 });
+      }
+    
+      const hashedPassword = await bcrypt.hash(password, 10);
+    
+      await prisma.user.create({
+        data: {
+          name,
+          email: email.toLowerCase(),
+          password: hashedPassword,
+        },
+      });
+    
+      return NextResponse.json("User created successfully!", { status: 200 });
+    }
