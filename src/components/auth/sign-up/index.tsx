@@ -39,7 +39,7 @@ const Signup = () => {
       .then((data) => {
         toast.success("Successfully registered");
         setLoading(false);
-        router.push("/login");
+        router.push("/dashboard");
       })
       .catch((err) => {
         toast.error(err.message);
