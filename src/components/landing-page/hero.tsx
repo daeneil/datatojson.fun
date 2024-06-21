@@ -11,7 +11,7 @@ export default function Hero() {
       <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
         <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
           <p className="text-sm font-semibold text-gray-700">
-            Quill is now public!
+            Datatojson converts your data!
           </p>
         </div>
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl"> 
@@ -19,8 +19,7 @@ export default function Hero() {
           json format.
         </h1>
         <p className="mt-5 max-w-prose  sm:text-lg">
-          Quill allows you to have conversations with any PDF document. Simply
-          upload your file and start asking questions right away.
+          Datatojson allows you to convert any data into json format in seconds.
         </p>
         <LinearGradient />
         <Link
@@ -55,10 +54,10 @@ export default function Hero() {
               <div className="mt-16 flow-root sm:mt-24">
                 <div className="m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <Image
-                    src="/dashboard-dark.png"
+                    src="/datatoson.png"
                     alt="dashboard preview"
-                    width={1280}
-                    height={866}
+                    width={1351}
+                    height={631}
                     quality={100}
                     className="rounded-md object-cover bg-transparent p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
                   />
@@ -125,7 +124,7 @@ export default function Hero() {
               <span className="text-xl font-semibold">
                 Start converting your data.
               </span>
-              <span className="mt-2 text-zinc-700">
+              <span className="mt-2 text-white">
                 Go to the dashboard and start converting your data.
               </span>
             </div>
@@ -135,12 +134,12 @@ export default function Hero() {
           <div className="mt-16 flow-root sm:mt-24">
             <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
-                src="/file-upload-preview.jpg"
+                src="/apikey.png"
                 alt="uploading preview"
-                width={1419}
-                height={732}
+                width={1366}
+                height={619}
                 quality={100}
-                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+                className="rounded-md bg-transparent sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
               />
             </div>
           </div>
