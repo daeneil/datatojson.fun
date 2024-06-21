@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["prismaSchemaFolder"]
 }
 
 datasource db {
@@ -13,7 +14,6 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-        
 
 model Account {
   id                String  @id @default(cuid())
@@ -61,13 +61,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model Report {
-  id          Int      @id @default(autoincrement())
-  area        String
-  severity    Int
-  subject     String
-  description String
-  createdAt   DateTime @default(now())
 }
